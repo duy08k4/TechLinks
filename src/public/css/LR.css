@@ -1,0 +1,38 @@
+.LRcontainer {
+    height: 100%;
+    width: 100%;
+    background-color: var(--mainColor);
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    height: 80px;
+    width: 100%;
+    background-color: #1f2937;
+    padding: 15px;
+}
+
+.navbar--logbox {
+    height: 100%;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    
+    .navbar--logbox__img {
+        height: 100%;
+    }
+
+    .navbar--logbox__name {
+        color: white;
+        font-weight: lighter;
+    }
+}
+
+.LRcontainer--mainPage {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

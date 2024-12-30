@@ -1,0 +1,28 @@
+{
+  "name": "techlinks",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duy08k4/TechLinks.git"
+  },
+  "author": "CodeWeb Newbie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/duy08k4/TechLinks/issues"
+  },
+  "homepage": "https://github.com/duy08k4/TechLinks#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-handlebars": "^8.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.9"
+  }
+}
