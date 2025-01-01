@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/LR.css">
     <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/register.css">
+    <link rel="stylesheet" href="/css/mainPage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <title>TechLinks</title>
 </head>
 <body>
@@ -13,13 +16,52 @@
         <div class="navbar">
             <div class="navbar--logbox">
                 <img class="navbar--logbox__img" src="img/logo.png" alt="Logo trang web">
-                <h1 class="navbar--logbox__name">TechLinks</h1>
+                <a href="/" class="navbar--logbox__name noSelect">TechLinks</a>
             </div>
+
+            {{#if logined}}
+                <div class="menu">
+                    <div class="userAccountBox">
+                        <i class="fas fa-user"></i>
+                        <p class="useraccountBox--userMail noSelect">duytran.290804@gmail.com</p>
+                    </div>
+
+                    <div class="menu--btnBox">
+                        <button class="menu--btn"><i class="fas fa-sign-out-alt"></i></button>
+                    </div>
+                </div>
+            {{/if}}
         </div>
 
         <div class="LRcontainer--mainPage">
             {{{body}}}
         </div>
+
+        {{!-- <div class="confirmForm">
+            <div class="confirmForm--confirmBox">
+                <div class="confirmForm--confirmBox--titleBox">
+                    <h1 class="confirmForm--confirmBox--titleBox--title noSelect">Are you sure?</h1>
+                </div>
+
+                <div class="confirmForm--confirmBox--btnBox">
+                    <button class="confirmForm--confirmBox--btnBox--btn confirmForm--confirmBox--btnBox--declineBtn"><i class="fas fa-times"></i> No</button>
+                    <button class="confirmForm--confirmBox--btnBox--btn confirmForm--confirmBox--btnBox--acceptBtn"><i class="fas fa-check"></i> Yes</button>
+                </div>
+            </div>
+        </div> --}}
+
+        {{!-- <div class="loading">
+            <div class="loader"></div>
+        </div> --}}
+
+        {{!-- <div class="announceBox">
+            <div class="announceTag" style="--t: 4s">
+                <i class="fas fa-times-circle"></i>
+                <p class="announceTag--content">Thao tác thất bại</p>
+            </div>
+        </div> --}}
+
+
     </div>
 </body>
 </html>

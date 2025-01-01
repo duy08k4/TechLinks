@@ -1,0 +1,96 @@
+<div class="mainPageContainer">
+    <div class="mainPageContainer--welcomeBox">
+        <h1 class="mainPageContainer--welcomeBox__welcome">Welcome to TechLinks</h1>
+        <p class="mainPageContainer--welcomeBox__slogan">Store, manage, and access your important URLs with ease.</p>
+        {{#if logined}}
+        {{else}}
+            <a href="/login" class="mainPageContainer--welcomeBox__button">Get Started</a>
+        {{/if}}
+    </div>
+
+    <div class="mainPageContainer--servicesBox">
+        <div class="mainPageContainer--servicesBox--element mainPageContainer--servicesBox--URLForm">
+            <div class="mainPageContainer--servicesBox--URLForm--element mainPageContainer--servicesBox--URLForm--titleBox">
+                <h1 class="mainPageContainer--servicesBox--URLForm--titleBox__title noSelect">New URL</h1>
+            </div>
+
+            <div class="mainPageContainer--servicesBox--URLForm--element mainPageContainer--servicesBox--URLForm--inputForm">
+                <div class="mainPageContainer--servicesBox--URLForm--inputForm--inputBox">
+                    <p class="mainPageContainer--servicesBox--URLForm--inputForm--inputBox--tag noSelect">Title</p>
+                    <input class="mainPageContainer--servicesBox--URLForm--inputForm--inputBox--input mainPageContainer--servicesBox--URLForm--inputForm--inputBox--input__title" type="text">
+                </div>
+
+                <div class="mainPageContainer--servicesBox--URLForm--inputForm--inputBox">
+                    <p class="mainPageContainer--servicesBox--URLForm--inputForm--inputBox--tag noSelect">URL</p>
+                    <input class="mainPageContainer--servicesBox--URLForm--inputForm--inputBox--input mainPageContainer--servicesBox--URLForm--inputForm--inputBox--input__URL" type="text">
+                </div>
+
+                <div class="mainPageContainer--servicesBox--URLForm--inputForm--inputBox">
+                    <p class="mainPageContainer--servicesBox--URLForm--inputForm--inputBox--tag noSelect">Description</p>
+                    <input class="mainPageContainer--servicesBox--URLForm--inputForm--inputBox--input mainPageContainer--servicesBox--URLForm--inputForm--inputBox--input__description" type="text">
+                </div>
+            </div>
+
+            <div class="mainPageContainer--servicesBox--URLForm--element mainPageContainer--servicesBox--URLForm--btnBox">
+                <button class="mainPageContainer--servicesBox--URLForm--btnBox--addBtn"><i class="fas fa-plus"></i> Add URL</button>
+            </div>
+        </div>
+
+        <div class="mainPageContainer--servicesBox--element mainPageContainer--servicesBox--URLListBox">
+            <div class="mainPageContainer--servicesBox--URLListBox--titleBox">
+                <h1 class="mainPageContainer--servicesBox--URLListBox--titleBox__title noSelect">Your URLs</h1>
+
+                {{#if logined}}
+                    <p class="mainPageContainer--servicesBox--URLListBox--titleBox__ammountURL noSelect">5/10</p>
+                {{/if}}
+            </div>
+
+            <div class="mainPageContainer--servicesBox--URLListBox--listURL">
+
+                {{#if logined}}
+                {{else}}
+                    <div class="mainPageContainer--servicesBox--URLListBox--listURL--card">
+                        <div class="mainPageContainer--servicesBox--URLListBox--listURL--card--titleBox noSelect">
+                            <p class="mainPageContainer--servicesBox--URLListBox--listURL--card--titleBox--title">Youtube</p>
+                        </div>
+
+                        <div class="mainPageContainer--servicesBox--URLListBox--listURL--card--urlBox">
+                            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="mainPageContainer--servicesBox--URLListBox--listURL--card--urlBox--url">https://www.youtube.com</a>
+                        </div>
+
+                        <div class="mainPageContainer--servicesBox--URLListBox--listURL--card--actionBox">
+                            <button class="mainPageContainer--servicesBox--URLListBox--listURL--card--actionBox--action mainPageContainer--servicesBox--URLListBox--listURL--card--actionBox--actionEdit"><i class="fas fa-edit"></i></button>
+                            <button class="mainPageContainer--servicesBox--URLListBox--listURL--card--actionBox--action mainPageContainer--servicesBox--URLListBox--listURL--card--actionBox--actionRemove"><i class="far fa-trash-alt"></i></button>
+                        </div>
+
+                        <div class="mainPageContainer--servicesBox--URLListBox--listURL--card--descriptionBox">
+                            <p>Đây là đường dẫn demo</p>
+                        </div>
+                    </div>
+
+                    <div class="mainPageContainer--servicesBox--URLListBox--listURL--card">
+                        <div class="mainPageContainer--servicesBox--URLListBox--listURL--card--titleBox noSelect">
+                            <p class="mainPageContainer--servicesBox--URLListBox--listURL--card--titleBox--title">Youtube</p>
+                        </div>
+
+                        <div class="mainPageContainer--servicesBox--URLListBox--listURL--card--urlBox">
+                            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="mainPageContainer--servicesBox--URLListBox--listURL--card--urlBox--url">https://www.youtube.com</a>
+                        </div>
+
+                        <div class="mainPageContainer--servicesBox--URLListBox--listURL--card--actionBox">
+                            <button class="mainPageContainer--servicesBox--URLListBox--listURL--card--actionBox--action mainPageContainer--servicesBox--URLListBox--listURL--card--actionBox--actionEdit"><i class="fas fa-edit"></i></button>
+                            <button class="mainPageContainer--servicesBox--URLListBox--listURL--card--actionBox--action mainPageContainer--servicesBox--URLListBox--listURL--card--actionBox--actionRemove"><i class="far fa-trash-alt"></i></button>
+                        </div>
+
+                        <div class="mainPageContainer--servicesBox--URLListBox--listURL--card--descriptionBox">
+                            <p>Đây là đường dẫn demo</p>
+                        </div>
+                    </div>
+                {{/if}}
+
+            </div>
+        </div>
+    </div>
+
+    <div class="span"></div>
+</div>

@@ -14,6 +14,18 @@ html, body {
     --mainColor: rgba(17, 24, 39, 1);
 }
 
+a {
+    text-decoration: none;
+}
+
+img {
+    user-select: none;
+}
+
+.noSelect {
+    user-select: none;
+}
+
 button:hover {
     cursor: grab;
 }
