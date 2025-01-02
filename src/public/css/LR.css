@@ -230,9 +230,6 @@
 }
 
 .announceTag {
-    position: absolute;
-    top: 0;
-    left: 0;
     height: 70px;
     width: 400px;
     background-color: #374151;
@@ -243,11 +240,16 @@
     border-radius: 0 10px 10px 0;
     animation: announceTagAnimate var(--t) linear;
     padding: 10px;
+    margin-bottom: 10px;
 
     i {
         font-size: 24px;
         color: red;
     }
+}
+
+.announceTag:nth-last-child(1) {
+    margin-bottom: 0;
 }
 
 .announceTag--content {
@@ -257,18 +259,19 @@
 
 @keyframes announceTagAnimate {
     0% {
-        left: 0;
+        
+        transform: translateX(0);
     }
-
+    
     5% {
-        left: calc(100% + 40px);
+        transform: translateX(calc(100% + 20px));
     }
-
+    
     95% {
-        left: calc(100% + 40px);
+        transform: translateX(calc(100% + 20px));
     }
 
     100% {
-        left: 0;
+        transform: translateX(0);
     }
 }

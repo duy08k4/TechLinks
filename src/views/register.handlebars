@@ -6,12 +6,12 @@
     <div class="registerForm--inputForm">
         <div class="registerForm--inputForm--inputBox">
             <p class="registerForm--inputForm--inputBox--tag noSelect">Gmail</p>
-            <input class="registerForm--inputForm--inputBox--input registerForm--inputForm--inputBox--input__gmail" type="text">
+            <input class="registerForm--inputForm--inputBox--input registerForm--inputForm--inputBox--input__gmail" type="email">
         </div>
 
         <div class="registerForm--inputForm--inputBox">
             <p class="registerForm--inputForm--inputBox--tag noSelect">Password</p>
-            <input class="registerForm--inputForm--inputBox--input registerForm--inputForm--inputBox--input__password" type="text">
+            <input class="registerForm--inputForm--inputBox--input registerForm--inputForm--inputBox--input__password" type="password">
         </div>
 
         <div class="registerForm--inputForm--inputBox">
@@ -21,10 +21,25 @@
     </div>
 
     <div class="registerForm--btnBox">
-        <button class="registerForm--btnBox--btnRegister">Register</button>
+        <button class="registerForm--btnBox--btnRegister">NEXT</button>
     </div>
 
     <div class="registerForm--redirectBox">
         <a href="/login">Already have an account?</a>
     </div>
+
+    <button class="registerForm--requireForInput--btn"><i class="fas fa-question"></i></button>
+
+    <div class="registerForm--tutorialsBox">
+        <div class="registerForm--tutorialsBox--requireBox">
+            <h2 class="registerForm--tutorialsBox--requireBox--title">Password</h2>
+            <ul class="registerForm--tutorialsBox--requireBox--listRequire">
+                <li>Length from 8 to 20 characters</li>
+                <li>Contains capital letters and numbers</li>
+                <li>Do not use whitespace characters</li>
+            </ul>
+        </div>
+    </div>
 </div>
+
+<script type="module" src="/register.js"></script>

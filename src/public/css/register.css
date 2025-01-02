@@ -1,4 +1,5 @@
 .registerForm {
+    position: relative;
     height: fit-content;
     width: fit-content;
     background-color: #1f2937;
@@ -87,5 +88,58 @@
     a {
         color: rgb(1, 194, 194);
         font-style: italic;
+    }
+}
+
+.registerForm--requireForInput--btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: 10px;
+    width: 10px;
+    font-size: 16px;
+    color: white;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-radius: 50%;
+}
+
+.registerForm--tutorialsBox {
+    position: absolute;
+    top: 20px;
+    left: calc(100% + 20px);
+    height: fit-content;
+    width: 350px;
+    display: none;
+    background-color: #374151;
+    padding: 20px;
+    border: solid 1px rgba(255, 255, 255, 0.5);
+    border-radius: 0 10px 10px 10px;
+}
+
+.registerForm--tutorialsBox.open {
+    display: block;
+    height: fit-content;
+    width: 350px;
+}
+
+.registerForm--tutorialsBox--requireBox--title {
+    color: white;
+    margin-bottom: 15px;
+}
+
+.registerForm--tutorialsBox--requireBox--listRequire {
+    list-style: square;
+    font-size: 14px;
+    height: fit-content;
+    width: 100%;
+    padding: 0 0 0 20px;
+
+    li {
+        color: #b1b1b1;
+        margin-bottom: 10px;
     }
 }
