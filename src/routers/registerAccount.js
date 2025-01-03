@@ -1,14 +1,44 @@
 const db = require("../../firebaseSDK")
 
+function createUserID() {
+    let userID = "techlinksUser::"
+    let date = new Date()
+    let getDateTime = (date.getTime()).toString()
+    let randomnNumber = (Array.from({ length: 6 }, () => Math.floor(Math.random() * 10)).join('')).toString()
+
+    userID += getDateTime + randomnNumber
+
+    let createTime = `${date.getDate()} THG ${date.getMonth() + 1}, ${date.getFullYear()}`
+
+    return { userID, createTime }
+}
+
 async function createAccount(email, password, req, res) {
     // Tạo tài khoản
-    
-    res.clearCookie("verifyCode").clearCookie("email").clearCookie("password")
+    let { userID, createTime } = createUserID()
 
-    return res.json({
-        status: "S",
-        message: "Tạo tài khoản thành công"
+    await db.collection(btoa(process.env.KEY_USER_ACCOUNT)).doc(btoa(email)).set({
+        userID: btoa(userID),
+        email: btoa(email),
+        password: btoa(password),
+        createTime: createTime
     })
+    .then(() => {
+        res.clearCookie("verifyCode").clearCookie("email").clearCookie("password")
+    
+        return res.json({
+            status: "S",
+            message: "Successfully created account!"
+        })
+    })
+    .catch(err => {
+        console.log(err)
+        return res.json({
+            status: "E",
+            message: "Failed to create account!"
+        })
+    })
+    
 }
 
 module.exports = function(app) {
@@ -19,7 +49,7 @@ module.exports = function(app) {
         if(trueVerifyCode === undefined) {
             return res.json({
                 status: "E",
-                message: "Mã xác nhận đã hết hạn"
+                message: "Verify code has expired"
             })
         } else {
             if(inputVerifyCode === trueVerifyCode) {
@@ -27,7 +57,7 @@ module.exports = function(app) {
             } else {
                 res.json({
                     status: "E",
-                    message: "Mã xác nhận không đúng"
+                    message: "Verify code is incorrect"
                 })
             }
         }
