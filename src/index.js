@@ -8,7 +8,7 @@ const dotenv = require("dotenv")
 const port = 5000
 
 // Logger
-app.use(morgan("combined"))
+// app.use(morgan("combined"))
 
 // Configuration
 dotenv.config()

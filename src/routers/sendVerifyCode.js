@@ -41,26 +41,31 @@ async function sendVerifyCode(receiverMail) {
 
 module.exports = function(app) {
     app.post("/register/sendVerifyCode", async (req, res) => {
-        let result = await sendVerifyCode(req.body.email)
+        let getTypeRequest = req.body.typeRequest
+        let result
+        if(getTypeRequest == "resend" && !req.cookies.verifyCode) {
+            result = await sendVerifyCode(atob(req.cookies.email))            
+        } else {
+            result = await sendVerifyCode(req.body.email)
+        }
+
         res.cookie("verifyCode", result,{
             httpOnly: true,
             secure: true,
-            expires: new Date(Date.now() + (60000 * 2))
+            expires: new Date(Date.now() + (60000))
         }).cookie("email", btoa(req.body.email), {
             httpOnly: true,
             secure: true,
-            expires: new Date(Date.now() + (60000 * 2))
         }).cookie("password", btoa(req.body.password), {
             httpOnly: true,
             secure: true,
-            expires: new Date(Date.now() + (60000 * 2))
         })
 
 
         if(result != false) {
             return res.json({
                 status: "S",
-                message: "Đã gửi mã xác nhận"
+                message: "Verify code has been sent"
             })
 
         } else {
