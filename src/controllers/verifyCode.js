@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 document.querySelector(".verifyCodeForm--verifyCodeInputBox--resendBtn").addEventListener("click", () => {
+    showLoading()
     fetch("/register/sendVerifyCode", {
         method: "POST",
         headers: {
@@ -41,8 +42,13 @@ document.querySelector(".verifyCodeForm--verifyCodeInputBox--resendBtn").addEven
     })
     .then(res => res.json())
     .then(data => {
+        hideLoading()
         createAnnouceTag("S", "Verify code has been sent", 3)
         startCountDown()
+    })
+    .catch(err => {
+        hideLoading()
+        console.log(err)
     })
 })
 

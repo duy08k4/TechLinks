@@ -1,4 +1,6 @@
 const nodemailer = require('nodemailer');
+const db = require("../../firebaseSDK")
+
 
 // Hàm gửi mã xác nhận
 async function sendVerifyCode(receiverMail) {
@@ -39,6 +41,16 @@ async function sendVerifyCode(receiverMail) {
     }
 }
 
+async function checkExistEmail(email) {
+    const ref = db.collection(btoa(process.env.KEY_USER_ACCOUNT))
+    const doc = ref.doc(btoa(email)).get()
+    if (doc.exists) {
+        return true
+    } else {
+        return false
+    }
+}
+
 module.exports = function(app) {
     app.post("/register/sendVerifyCode", async (req, res) => {
         let getTypeRequest = req.body.typeRequest
@@ -46,9 +58,19 @@ module.exports = function(app) {
         if(getTypeRequest == "resend" && !req.cookies.verifyCode) {
             result = await sendVerifyCode(atob(req.cookies.email))            
         } else {
+            let gmail = req.body.email
+            let resultCheck = await checkExistEmail(gmail)
+
+            if(resultCheck) {
+                return res.json({
+                    status: "E",
+                    message: "Gmail has been used"
+                })
+            }
+
             result = await sendVerifyCode(req.body.email)
         }
-
+        
         res.cookie("verifyCode", result,{
             httpOnly: true,
             secure: true,
@@ -74,5 +96,6 @@ module.exports = function(app) {
                 message: "Gmail không tồn tại"
             })
         }
+
     })
 }

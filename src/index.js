@@ -8,7 +8,7 @@ const dotenv = require("dotenv")
 const port = 5000
 
 // Logger
-// app.use(morgan("combined"))
+app.use(morgan("combined"))
 
 // Configuration
 dotenv.config()
@@ -36,6 +36,8 @@ app.get("/", (req, res) => {
 })
 
 // LoginForm
+require("./routers/login")(app)
+
 app.get("/login", (req, res) => {
     res.render("login", {
         layout: "LR"
