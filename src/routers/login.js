@@ -46,7 +46,7 @@ module.exports = function (app) {
                             }
                         })
                     }
-                    
+                    let getLimit = await db.collection("rules").doc("limitation").get()
                     let accessToken = jwt.sign({inputGmail, userID}, process.env.SCKEY, { expiresIn: "15m" })
 
                     res.cookie(base64URL(process.env.CK_acToken), base64URL(accessToken), {
@@ -61,7 +61,10 @@ module.exports = function (app) {
 
                      return res.json({
                         status: "S",
-                        message: "Login successfully"
+                        message: "Login successfully",
+                        l_Title: getLimit.data().title,
+                        l_URL: getLimit.data().url,
+                        l_Description: getLimit.data().description
                     })
                 }
             }

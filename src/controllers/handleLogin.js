@@ -43,6 +43,10 @@ document.querySelector(".loginForm--btnBox--btnLogin").addEventListener("click",
     .then(data => {
         hideLoading()
         if(data.status == "S") {
+            localStorage.setItem("l_Title", data.l_Title)
+            localStorage.setItem("l_URL", data.l_URL)
+            localStorage.setItem("l_Description", data.l_Description)
+            
             window.location.href = "/"
         } else {
             createAnnouceTag(data.status, data.message, 3)

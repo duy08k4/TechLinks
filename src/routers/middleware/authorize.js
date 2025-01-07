@@ -57,7 +57,7 @@ const authorize = (req, res, next) => {
                             redirect: "/login"
                         })
                     } else {
-                        newAccessToken = jwt.sign({inputGmail: rfData.inputGmail, userID: rfData.userID}, process.env.SCKEY, { expiresIn: "15m" })
+                        newAccessToken = jwt.sign({inputGmail: rfData.inputGmail, userID: rfData.userID}, process.env.SCKEY, { expiresIn: "20s" })
                         res.cookie(base64URL(process.env.CK_acToken), base64URL(newAccessToken), {
                             httpOnly: true,
                             secure: true
@@ -70,13 +70,11 @@ const authorize = (req, res, next) => {
                 next()
             }
         })
-    } else {
-        return res.json({
-            status: "E",
-            message: "You haven't logged in yet. Please login first.",
-            redirect: "/login"
-        })
-    }
+    } else return res.json({
+        status: "E",
+        message: "Your session has expired. Please login again.",
+        redirect: "/login"
+    })
 }
 
 module.exports = { authorizeLogin, authorize }

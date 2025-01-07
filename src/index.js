@@ -32,6 +32,7 @@ app.use(express.json())
 // MainPage
 app.get("/", authorizeLogin, (req, res) => {
     if(req.user) {
+        console.log(req.user)
         res.render("mainPage", {
             layout: "LR",
             logined: req.user.logined,
@@ -45,12 +46,7 @@ app.get("/", authorizeLogin, (req, res) => {
     }
 })
 
-app.post("/addURL", authorize, (req, res) => {
-    res.json({
-        status: "S",
-        message: "Add URL successfully!"
-    })
-})
+require("./routers/addURL")(app)
 
 // LoginForm
 require("./routers/login")(app)

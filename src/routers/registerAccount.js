@@ -21,7 +21,8 @@ async function createAccount(email, password, req, res) {
         userID: btoa(userID),
         email: btoa(email),
         password: btoa(password),
-        createTime: createTime
+        createTime: createTime,
+        role: "userBasic"
     })
     .then(() => {
         res.clearCookie("verifyCode").clearCookie("email").clearCookie("password")
