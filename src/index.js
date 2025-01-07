@@ -1,10 +1,12 @@
 const express = require("express")
-const app = express()
 const { engine } = require("express-handlebars")
-const path = require("path")
 const morgan = require("morgan")
 const cookieParser = require("cookie-parser")
+
+const app = express()
+const path = require("path")
 const dotenv = require("dotenv")
+const { authorizeLogin, authorize } = require("./routers/middleware/authorize")
 const port = 5000
 
 // Logger
@@ -32,6 +34,20 @@ app.get("/", (req, res) => {
     res.render("mainPage", {
         layout: "LR",
         logined: false
+    })
+})
+
+app.get("/logined", authorizeLogin, (req, res) => {
+    res.render("mainPage", {
+        layout: "LR",
+        logined: true
+    })
+})
+
+app.post("/addURL", authorize, (req, res) => {
+    res.json({
+        status: "S",
+        message: "Add URL successfully!"
     })
 })
 

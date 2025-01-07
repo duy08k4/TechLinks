@@ -42,6 +42,12 @@ document.querySelector(".loginForm--btnBox--btnLogin").addEventListener("click",
     .then(res => res.json())
     .then(data => {
         hideLoading()
+        if(data.status == "S") {
+            window.location.href = "/logined"
+        } else {
+            createAnnouceTag(data.status, data.message, 3)
+        }
+
     })
     .catch(err => {
         console.log(err)
