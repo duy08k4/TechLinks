@@ -30,18 +30,19 @@ app.use(express.json())
 
 // Router -------------------------------------------------------------
 // MainPage
-app.get("/", (req, res) => {
-    res.render("mainPage", {
-        layout: "LR",
-        logined: false
-    })
-})
-
-app.get("/logined", authorizeLogin, (req, res) => {
-    res.render("mainPage", {
-        layout: "LR",
-        logined: true
-    })
+app.get("/", authorizeLogin, (req, res) => {
+    if(req.user) {
+        res.render("mainPage", {
+            layout: "LR",
+            logined: req.user.logined,
+            user: req.user.inputGmail
+        })
+    } else {
+        res.render("mainPage", {
+            layout: "LR",
+            logined: false
+        })
+    }
 })
 
 app.post("/addURL", authorize, (req, res) => {
@@ -54,17 +55,25 @@ app.post("/addURL", authorize, (req, res) => {
 // LoginForm
 require("./routers/login")(app)
 
-app.get("/login", (req, res) => {
-    res.render("login", {
-        layout: "LR"
-    })
+app.get("/login", authorizeLogin, (req, res) => {
+    if(req.user) {
+        res.redirect("/")
+    } else {
+        res.render("login", {
+            layout: "LR"
+        })
+    }
 })
 
 // VerifyForm
-app.get("/register/verify", (req, res) => {
-    res.render("verifyCode", {
-        layout: "LR",
-    })
+app.get("/register/verify", authorizeLogin, (req, res) => {
+    if(req.user) {
+        res.redirect("/")
+    } else {
+        res.render("verifyCode", {
+            layout: "LR",
+        })
+    }
 })
 
 // Send Code
@@ -73,14 +82,18 @@ require("./routers/sendVerifyCode")(app)
 // RegisterForm
 require("./routers/registerAccount")(app)
 
-app.get("/register", (req, res) => {
-    res.render("register", {
-        layout: "LR"
-    })
+app.get("/register", authorizeLogin, (req, res) => {
+    if(req.user) {
+        res.redirect("/")
+    } else {
+        res.render("register", {
+            layout: "LR"
+        })
+    }
 })
 
-
-
+// Logout
+require("./routers/logout")(app)
 
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`)

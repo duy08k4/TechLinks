@@ -43,7 +43,7 @@ document.querySelector(".loginForm--btnBox--btnLogin").addEventListener("click",
     .then(data => {
         hideLoading()
         if(data.status == "S") {
-            window.location.href = "/logined"
+            window.location.href = "/"
         } else {
             createAnnouceTag(data.status, data.message, 3)
         }

@@ -1,4 +1,4 @@
-function createPopup (title){
+async function createPopup (title){
     return new Promise((resolve) => {
         let popup = document.createElement("div")
         popup.classList.add("popup")

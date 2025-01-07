@@ -29,12 +29,8 @@ module.exports = function (app) {
                         message: "Account is incorrect"
                     })
                 } else {
-                    let userID = getDoc.data().userID
+                    let userID = atob(getDoc.data().userID)
                     let refreshToken
-                    let tokenData = {
-                        inputGmail: inputGmail,
-                        userID: userID
-                    }
 
                     if (!getDoc.data().rfToken) {
                         refreshToken = jwt.sign({inputGmail, userID}, process.env.SCKEY, { expiresIn: "1d" })
