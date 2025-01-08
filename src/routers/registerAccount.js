@@ -1,4 +1,4 @@
-const db = require("../../firebaseSDK")
+const { db } = require("../../firebaseSDK")
 
 function createUserID() {
     let userID = "techlinksUser::"

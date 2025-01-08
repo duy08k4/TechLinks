@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer');
-const db = require("../../firebaseSDK")
+const { db } = require("../../firebaseSDK")
 
 
 // Hàm gửi mã xác nhận

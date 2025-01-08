@@ -32,11 +32,11 @@ app.use(express.json())
 // MainPage
 app.get("/", authorizeLogin, (req, res) => {
     if(req.user) {
-        console.log(req.user)
         res.render("mainPage", {
             layout: "LR",
             logined: req.user.logined,
-            user: req.user.inputGmail
+            user: req.user.inputGmail,
+            limitAmountLink: req.user.limitAmountLink
         })
     } else {
         res.render("mainPage", {
@@ -46,6 +46,13 @@ app.get("/", authorizeLogin, (req, res) => {
     }
 })
 
+// Get all URL
+require("./routers/getURL")(app)
+
+// Remove URL
+require("./routers/removeURL")(app)
+
+// Add URL
 require("./routers/addURL")(app)
 
 // LoginForm

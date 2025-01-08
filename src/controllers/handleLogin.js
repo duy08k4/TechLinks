@@ -46,7 +46,7 @@ document.querySelector(".loginForm--btnBox--btnLogin").addEventListener("click",
             localStorage.setItem("l_Title", data.l_Title)
             localStorage.setItem("l_URL", data.l_URL)
             localStorage.setItem("l_Description", data.l_Description)
-            
+            localStorage.setItem("limitAmountLink", data.limitAmountLink)
             window.location.href = "/"
         } else {
             createAnnouceTag(data.status, data.message, 3)

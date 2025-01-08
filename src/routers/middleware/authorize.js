@@ -23,16 +23,17 @@ const authorizeLogin = (req, res, next) => {
                         req.user = {
                             inputGmail: rfData.inputGmail,
                             userID: rfData.userID,
-                            logined: true
+                            logined: true,
+                            limitAmountLink: atob(req.cookies[base64URL(process.env.ammountLink)])
                         }
                     }
                 })
             } else {
-                console.log("Data: ", decoded)
                 req.user = {
                     inputGmail: decoded.inputGmail,
                     userID: decoded.userID,
-                    logined: true
+                    logined: true,
+                    limitAmountLink: atob(req.cookies[base64URL(process.env.ammountLink)])
                 }
             }
         })
@@ -63,16 +64,26 @@ const authorize = (req, res, next) => {
                             secure: true
                         })
 
+                        req.user = {
+                            inputGmail: rfData.inputGmail,
+                            userID: rfData.userID,
+                        }
+
                         next()
                     }
                 })
             } else {
+                req.user = {
+                    inputGmail: decoded.inputGmail,
+                    userID: decoded.userID,
+                }
+
                 next()
             }
         })
     } else return res.json({
         status: "E",
-        message: "Your session has expired. Please login again.",
+        message: "Please login first.",
         redirect: "/login"
     })
 }

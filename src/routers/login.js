@@ -1,4 +1,4 @@
-const db = require("../../firebaseSDK")
+const { db } = require("../../firebaseSDK")
 const jwt = require("jsonwebtoken")
 const { base64URL } = require("../controllers/modules/base64URL")
 
@@ -30,6 +30,7 @@ module.exports = function (app) {
                     })
                 } else {
                     let userID = atob(getDoc.data().userID)
+                    let userRole = getDoc.data().role
                     let refreshToken
 
                     if (!getDoc.data().rfToken) {
@@ -47,6 +48,8 @@ module.exports = function (app) {
                         })
                     }
                     let getLimit = await db.collection("rules").doc("limitation").get()
+                    let getRole = await db.collection("roles").doc(userRole).get()
+                    let getAmountLink = getRole.data().amountLink
                     let accessToken = jwt.sign({inputGmail, userID}, process.env.SCKEY, { expiresIn: "15m" })
 
                     res.cookie(base64URL(process.env.CK_acToken), base64URL(accessToken), {
@@ -59,12 +62,18 @@ module.exports = function (app) {
                         secure: true
                     })
 
+                    res.cookie(base64URL(process.env.ammountLink), base64URL(getAmountLink), {
+                        httpOnly: true,
+                        secure: true
+                    })
+
                      return res.json({
                         status: "S",
                         message: "Login successfully",
                         l_Title: getLimit.data().title,
                         l_URL: getLimit.data().url,
-                        l_Description: getLimit.data().description
+                        l_Description: getLimit.data().description,
+                        limitAmountLink: getAmountLink
                     })
                 }
             }
