@@ -8,7 +8,7 @@
 .mainPageContainer--welcomeBox {
     height: 300px;
     width: 100%;
-    background: linear-gradient(to right,#2663eb, #9333ea);
+    background: linear-gradient(to right, #2663eb, #9333ea);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,7 +20,7 @@
         font-size: 48px;
         color: white;
     }
-    
+
     .mainPageContainer--welcomeBox__slogan {
         font-size: 20px;
         color: white;
@@ -247,4 +247,136 @@
     width: 100%;
     background-color: transparent;
     margin-top: 20px;
+}
+
+
+@media (max-width: 768px) {
+    .mainPageContainer {
+        padding: 15px 20px;
+    }
+
+    .mainPageContainer--welcomeBox {
+        height: 200px;
+        padding: 15px 20px;
+        gap: 10px;
+
+        .mainPageContainer--welcomeBox__welcome {
+            font-size: 22px;
+        }
+
+        .mainPageContainer--welcomeBox__slogan {
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+        }
+
+        .mainPageContainer--welcomeBox__button {
+            font-size: 14px;
+            padding: 10px 20px;
+            margin-top: 10px;
+        }
+    }
+
+    .mainPageContainer--servicesBox {
+        flex-direction: column;
+    }
+
+    .mainPageContainer--servicesBox--element {
+        max-width: 100%;
+        padding: 40px 20px;
+    }
+
+    .mainPageContainer--servicesBox--URLForm--titleBox__title {
+        font-size: 26px;
+    }
+
+    .mainPageContainer--servicesBox--URLForm--inputForm--inputBox--tag {
+        font-size: 14px;
+    }
+
+    .mainPageContainer--servicesBox--URLForm--inputForm--inputBox--tag--characterCount {
+        font-size: 12px;
+    }
+
+    .mainPageContainer--servicesBox--URLForm--inputForm--inputBox--input {
+        height: 30px;
+    }
+
+    .mainPageContainer--servicesBox--URLForm--btnBox--addBtn {
+        height: 30px;
+    }
+
+    .mainPageContainer--servicesBox--URLListBox--listURL {
+        padding: 0 0px;
+    }
+
+    .mainPageContainer--servicesBox--URLListBox--listURL--card {
+        height: fit-content;
+        width: 100%;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        border-radius: 5px;
+        padding: 20px;
+    }
+
+    .mainPageContainer--servicesBox--URLListBox--listURL--card--descriptionBox {
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        height: fit-content;
+        transform: translateX(0);
+        display: none;
+        width: 100%;
+        color: white;
+        word-wrap: break-word;
+        background-color: #374151;
+        padding: 10px;
+        border: solid 1px white;
+        border-radius: 5px;
+    }
+
+    .mainPageContainer--servicesBox--URLListBox--listURL--card:hover .mainPageContainer--servicesBox--URLListBox--listURL--card--descriptionBox {
+        display: block;
+    }
+
+    .mainPageContainer--servicesBox--URLListBox--listURL--card:active .mainPageContainer--servicesBox--URLListBox--listURL--card--descriptionBox {
+        display: block;
+    }
+
+    .mainPageContainer--servicesBox--URLListBox--listURL--card--titleBox {
+        width: 100%;
+        font-size: 18px;
+    }
+
+    .mainPageContainer--servicesBox--URLListBox--listURL--card--urlBox {
+        width: 100%;
+        a {
+            font-size: 14px;
+        }
+    }
+
+    .mainPageContainer--servicesBox--URLListBox--listURL--card--actionBox {
+        width: 100%;
+        height: fit-content;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 5px 0;
+        border-radius: 5px;
+        margin-top: 10px;
+    }
+
+    .mainPageContainer--servicesBox--URLListBox--listURL--card--actionBox--actionRemove {
+        height: 30px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #eeeeee;
+        padding: 10px;
+        border-radius: 50%;
+    }
 }

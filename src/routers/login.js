@@ -20,7 +20,7 @@ module.exports = function (app) {
             if (!(await getDoc).exists) {
                 return res.json({
                     status: "E",
-                    message: "Account is incorrect 1"
+                    message: "Account is incorrect"
                 })
             } else {
                 if(atob(getDoc.data().password) != inputPassword) {

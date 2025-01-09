@@ -58,3 +58,64 @@
     height: 40px;
     width: 450px;
 }
+
+@media (max-width: 768px) {
+    .verifyCodeForm {
+        width: 90%;
+        border-radius: 10px;
+        padding: 40px 20px 40px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+    }
+
+    .verifyCodeForm--title {
+        font-size: 22px;
+    }
+
+    .verifyCodeForm--verifyCodeInputBox {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .verifyCodeForm--verifyCodeInputBox--resendBtn {
+            background-color: var(--mainColor);
+            color: white;
+            border: none;
+            padding: 5px 0;
+            border-radius: 5px;
+        }
+
+        .verifyCodeForm--verifyCodeInputBox--resendBtn.disabled {
+            color: red;
+        }
+
+        .verifyCodeForm--verifyCodeInputBox--resendBtn.disabled:hover {
+            cursor: context-menu !important;
+        }
+
+        .verifyCodeForm--verifyCodeInputBox--resendBtn.disabled:active {
+            cursor: context-menu !important;
+        }
+    }
+
+    .verifyCodeForm--verifyCodeBox--input {
+        text-align: center;
+        height: 40px;
+        width: 100%;
+        color: white;
+        background-color: #374151;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+        padding: 0 10px;
+    }
+
+    .verifyCodeForm--btnBox {
+        width: 100%;
+    }
+
+    .verifyCodeForm--btnBox--verifyBtn {
+        height: 40px;
+        width: 100%;
+    }
+}
